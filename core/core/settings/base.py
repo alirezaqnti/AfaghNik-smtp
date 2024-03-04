@@ -1,3 +1,5 @@
+import os
+
 DEBUG = False
 SECRET_KEY = NotImplemented
 
@@ -10,6 +12,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "Main",
 ]
 
 MIDDLEWARE = [
@@ -27,7 +30,7 @@ ROOT_URLCONF = "core.core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],  # type: ignore # noqa
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -42,29 +45,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "core.core.wsgi.application"
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "djangokubernetes",
-        "HOST": "localhost",
-        "PORT": "5432",
-        "USER": "alirezaqanati",
-        "PASSWORD": "Agh050797",
-    }
-}
-
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -76,6 +72,13 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = "static/"
+# region Static & Media
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # type: ignore # noqa
+STATIC_URL = "/static/"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "", "media")  # type: ignore # noqa
+
+# endregion
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

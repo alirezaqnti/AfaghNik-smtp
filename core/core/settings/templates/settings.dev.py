@@ -8,3 +8,18 @@ load_dotenv()
 
 DEBUG = True
 SECRET_KEY = str(os.getenv("SECRET_KEY"))
+# region Customize Email Data
+
+EMAIL_ACCOUNT = ""
+EMAIL_PASSWORD = ""
+
+# endregion
+
+# region Customize DB Data
+
+DB_NAME = ""
+DB_HOST = ""
+DB_USER = ""
+DB_PASSWORD = ""
+
+# endregion
